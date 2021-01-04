@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Human Online Diagnostic Tool</title>
+    <script defer src="index.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body onload="initialize();">
+    <div class="overlay"></div>
+    <div class="cursor"></div>
+    <form autocomplete="off" class="login-page">
+    </form>
+    <template class="login-page-template">
+        <div class="title">
+            Human Online Diagnostic Tool
+        </div>
+        <br><br>
+        <h4 id="page-title">Login</h4>
+        <div class="login-logo">
+            <img src="img/login icon.png" class="login-icon">
+        </div>
+        <br><br>
+        <div class="sub-title">Username: </div>
+        <br>
+        <input type="text" placeholder="Enter Username" id="username">
+        <br><br>
+        <div class="sub-title">Email Address: </div>
+        <br>
+        <input type="text" placeholder="Enter Email Address" id="email">
+        <br><br>
+        <div class="sub-title">Password: </div>
+        <br>
+        <input type="text" placeholder="Enter Password" id="password">
+        <br><br>
+        <div class="wrong-login">Wrong login information. Please Try Again.</div>
+        <div class="login-ctrl">
+            <h5 id="sign-up-btn">Sign Up</h5>
+            <h5 id="login-btn">Login</h5>
+        </div>
+    </template>
+    <template class="signup-page-template">
+        <div class="title">
+            Human Online Diagnostic Tool
+        </div>
+        <br><br>
+        <h4 id="page-title">Sign Up</h4>
+        <div class="login-logo">
+            <img src="img/login icon.png" class="login-icon">
+        </div>
+        <br><br>
+        <div class="genders">
+            <input type="radio" name="gender" id="male-radio" value="male">
+            <label for="male-radio">Male</label>
+            <input type="radio" name="gender" id="female-radio" value="female">
+            <label for="female-radio">Female</label>
+        </div>
+        <div class="sub-title">Username: </div>
+        <br>
+        <input type="text" placeholder="Enter Username" id="username">
+        <br><br>
+        <div class="sub-title">Email Address: </div>
+        <br>
+        <input type="text" placeholder="Enter Email Address" id="email">
+        <br><br>
+        <div class="sub-title">Password: </div>
+        <br>
+        <input type="text" placeholder="Enter Password" id="password">
+        <br><br>
+        <div class="login-ctrl">
+            <h5 id="go-back-btn">Go Back</h5>
+            <h5 id="new-signup-btn">Sign Up</h5>
+        </div>
+    </template>
+    <section class="diagnostic-page">
+        <div class="img-container">
+            <div class="body-btn" id="head" data-body-part="Head"></div>
+            <div class="body-btn" id="chest" data-body-part="Chest"></div>
+            <div class="body-btn" id="stomach" data-body-part="Stomach"></div>
+            <div class="body-btn" id="shoulder" data-body-part="Shoulder"></div>
+            <div class="body-btn" id="leg" data-body-part="Leg"></div>
+            <img src="img/male-body.png" alt="male" id="male" class="body-image">
+            <img src="img/female-body.png" alt="female" id="female" class="body-image">
+        </div>
+        <div class="diagnostic-box" id="diagnostic-box">
+            <header id="box-header">
+                Diagnostic Report
+            </header>
+            <div id="patient-name"></div>
+            <div class="diagnostic-list" data-diagnostic-list>
+            </div>
+            <button class="clear-btn">Clear All Symptoms</button>
+        </div>
+        <div class="symptom-box">
+            <header id="symptom-header">
+                Symptoms
+            </header>
+            <div id="symptom-name">Please Select A Body Part</div>
+            <div class="potential-title">Potential Symptoms:</div>
+            <ul class="potential-symptoms-list">
+
+            </ul>
+            <div class="personal-title">Personal Symptoms:</div>
+            <ul class="symptom-list" data-symptom-list>
+
+            </ul>
+            <input type="text" placeholder="Enter Symptom" id="symptom-input">
+        </div>
+    </section>
+    
+</body>
+</html>

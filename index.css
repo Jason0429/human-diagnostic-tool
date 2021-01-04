@@ -1,0 +1,444 @@
+* {
+	font-family: "Poppins", sans-serif;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	cursor: none;
+}
+
+.cursor {
+	height: 1rem;
+	width: 1rem;
+	background-color: transparent;
+	border-radius: 50%;
+	border: 2px solid black;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	pointer-events: none;
+}
+
+.highlight {
+	background-color: white;
+	height: 1.5rem;
+	width: 1.5rem;
+	transition: all .3s ease-in;
+	transition-property: background-color, height, width, border;
+	transform-origin: 100% 100%;
+}
+
+.overlay {
+	background-color: rgba(0, 0, 0, .1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.overlay.active {
+	opacity: 1;
+	pointer-events: all;
+	transition: all .5s ease-in;
+}
+
+.login-page.active {
+	transform: translate(-50%, 50%) scale(1);
+	transition: all .5s ease-in;
+}
+
+.login-page {
+	position: fixed;
+	bottom: 50%;
+	left: 50%;
+	transform: translate(-50%, 50%) scale(0);
+	width: 25rem;
+	padding: 40px;
+	border: 1px solid rgba(0, 0, 0, .3);
+	box-shadow: 3px 0px 20px rgba(0, 0, 0, .2);
+	opacity: 0;
+	background-color: white;
+}
+
+.login-page > .title {
+	font-family: "Montserrat", sans-serif;
+	font-weight: 900;
+	font-size: 1.2em;
+}
+
+.login-page > .title,
+.login-page > h4 {
+	text-align: center;
+}
+
+.login-icon {
+	height: 5rem;
+	left: 50%;
+	transform: translateX(-50%);
+	position: relative;
+	margin-top: 10px;
+}
+
+.login-page > input[type="text"] {
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid black;
+	padding: 5px;
+}
+
+.login-page > input[type="text"]:focus {
+	outline: none;
+}
+
+.login-ctrl {
+	display: flex;
+	justify-content: space-between;
+}
+
+.login-ctrl > h5 {
+	margin-top: 10px;
+	padding-bottom: 2px;
+	border-bottom: 1px solid transparent;
+}
+
+.login-ctrl > h5:hover {
+	border-bottom: 1px solid black;
+	transform: all .3s ease;
+	/* cursor: pointer; */
+}
+
+.genders {
+	display: flex;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin-bottom: 40px;
+}
+
+.genders > input[type="radio"] {
+	display: none;
+}
+
+.genders > label {
+	padding: 8px;
+	width: 100px;
+	text-align: center;
+	margin: auto;
+	border-radius: 40px;
+	border: 2px solid transparent;
+	background-color: #eee;
+}
+
+.genders > label:hover {
+	background-color: #ddd;
+}
+
+.genders > input[type="radio"]:checked + label {
+	border: 2px solid black;
+	transition: border .2s ease-in;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.diagnostic-page {
+	height: 100vh;
+	display: none;
+	background-color: #000;
+}
+
+.diagnostic-page > .img-container > img {
+	position: relative;
+	top: 50%;
+	left: 50%;
+	height: 100%;
+	transform: translate(-50%, -50%);
+	display: none;
+}
+
+.diagnostic-page > .img-container {
+	height: 80vh;
+	width: 40vw;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+.diagnostic-box {
+	height: auto;
+	width: 300px;
+	background-color: #eee;
+	color: black;
+	position: absolute;
+	top: 15%;
+	left: 15%;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	border-bottom-right-radius: 40px;
+	border-bottom-left-radius: 40px;
+	z-index: 3;
+}
+
+.diagnostic-box > header {
+	width: 100%;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	background-color: #d3d3d3;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+}
+
+#patient-name,
+#symptom-name {
+	padding: 5px 0px 5px 10px;
+}
+
+#patient-name {
+	border: 3px solid grey;
+}
+
+#symptom-name {
+	color: white;
+	background-color: rgba(0, 0, 0, .8);
+}
+
+.symptom-box {
+	height: auto;
+	width: 300px;
+	background-color: #eee;
+	color: black;
+	position: absolute;
+	top: 15%;
+	right: 15%;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+	z-index: 3;
+}
+
+.symptom-box > header {
+	width: 100%;
+	text-align: center;
+	padding: 10px 0px 10px 0px;
+	background-color: #d3d3d3;
+	border-top-right-radius: 40px;
+	border-top-left-radius: 40px;
+}
+
+.symptom-box > .symptom-list {
+	max-height: 350px;
+	overflow-y: scroll;
+}
+
+.body-btn {
+	position: absolute;
+	height: 1.5rem;
+	width: 1.5rem;
+	border: 2px solid white;
+	border-radius: 50%;
+	left: 50%;
+	top: 50%;
+	z-index: 2;
+}
+
+#head {
+	transform: translate(-50%, -1200%);
+}
+
+#chest {
+	transform: translate(-50%, -800%);
+}
+
+#stomach {
+	transform: translate(-50%, -450%);
+}
+
+#shoulder {
+	transform: translate(200%, -840%);
+}
+
+#leg {
+	transform: translate(100%, 100%);
+}
+
+#symptom-input {
+	width: calc(100% - 11px);
+	border: 1px solid transparent;
+	padding: 9px 0px 9px 0px;
+	padding-left: 9px;
+}
+
+#symptom-input:focus {
+	outline: none;
+	background-color: rgba(0, 0, 0, .001);
+	transition: background-color .1s ease-in;
+}
+
+li {
+	background-color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.diagnose-btn,
+.clear-btn {
+	width: 100%;
+	border: none;
+	background-color: rgba(0, 0, 0, .1);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-bottom-right-radius: 40px;
+	border-bottom-left-radius: 40px;
+}
+
+.clear-btn {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+button:hover {
+	background-color: rgba(0, 0, 0, .2);
+}
+
+button:focus {
+	outline: none;
+}
+
+.wrong-login {
+	text-align: center;
+	color: lightcoral;
+	font-family: 'Poppins', sans-serif;
+	font-size: .9rem;
+	padding-bottom: 20px;
+	visibility: hidden;
+}
+
+.potential-title,
+.personal-title {
+	font-size: .9rem;
+	padding: 5px 0px 5px 10px;
+	font-weight: bold;
+	display: none;
+}
+
+ul {
+	background-color: white;
+}
+
+ul > li {
+	color: black;
+	display: block;
+	visibility: visible;
+	position: relative;
+}
+
+ul > li:hover {
+	background-color: rgba(0, 0, 0, .1);
+}
+
+.selected::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	left: 0;
+	width: 18px;
+	bottom: 50%;
+	transform: translateY(50%);
+	background-color: grey;
+}
+
+.delete-hover::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	left: 0;
+	width: 18px;
+	bottom: 50%;
+	transform: translateY(50%);
+	background-color: lightcoral;
+}
+
+.delete-complete::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	left: 0;
+	width: 100%;
+	bottom: 50%;
+	transform: translateY(50%);
+	background-color: lightcoral;
+	transition: width .2s ease-in;
+	transition-property: width, z-index;
+}
+
+.loading-dots {
+	margin: auto;
+	padding: 10px 0px 10px 0px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: none;
+}
+.loading-dots > span {
+	width: 20px;
+	height: 20px;
+	background: grey;
+	margin-left: 3px;
+	margin-right: 3px;
+	border-radius: 50%;
+	/* animation: loading 2s linear */
+}
+
+.loading-dots > span:nth-child(1) {
+	animation-delay: 0s;
+}
+
+.loading-dots > span:nth-child(2) {
+	animation-delay: 0.25s;
+}
+
+.loading-dots > span:nth-child(3) {
+	animation-delay: 0.5s;
+}
+
+.loading-dots > span:nth-child(4) {
+	animation-delay: 0.75s;
+}
+
+.loading-dots > span:nth-child(5) {
+	animation-delay: 1s;
+}
+
+@keyframes loading {
+	0%,
+	100% {
+		transform: scale(0);
+	}
+	50% {
+		transform: scale(1);
+	}
+}
+
+.diagnostic-list > header {
+	font-size: .9em;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.diagnostic-list > p {
+	font-size: .8em;
+	padding: 10px;
+	line-height: 2em;
+}
